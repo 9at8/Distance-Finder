@@ -23,8 +23,8 @@ class Finder(object):
         minutes = int(round(time % 60))
         self.time = (hours, minutes)
         return 'Time difference between ' + self.name + ' and ' + \
-               other.name + ' is ' + str(self.time[0]) + ' hours and ' + \
-               str(self.time[1]) + ' minutes.'
+            other.name + ' is ' + str(self.time[0]) + ' hours and ' + \
+            str(self.time[1]) + ' minutes.'
 
 
 Gurgaon = Finder((28.4700, 77.0300), 'Gurgaon')
