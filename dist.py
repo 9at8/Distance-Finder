@@ -23,13 +23,24 @@ class Finder(object):
         minutes = int(round(time % 60))
         self.time = (hours, minutes)
         return 'Time difference between ' + self.name + ' and ' + \
-            other.name + ' is ' + str(self.time[0]) + ' hours and ' + \
-            str(self.time[1]) + ' minutes.'
+               other.name + ' is ' + str(self.time[0]) + ' hours and ' + \
+               str(self.time[1]) + ' minutes.'
 
 
 Gurgaon = Finder((28.4700, 77.0300), 'Gurgaon')
 Waterloo = Finder((43.4689, -80.5400), 'Waterloo')
 Delhi = Finder((28.6139, 77.2090), 'Delhi')
+F2016 = Finder((1.3329, 103.7361), 'Singapore')
+Googleplex = Finder((37.4184, 122.0880), 'Googleplex')
 
 print Gurgaon.distance_calculate(Waterloo)
 print Gurgaon.time_calculate(Waterloo)
+print '\n'
+print Gurgaon.distance_calculate(Delhi)
+print Gurgaon.time_calculate(Delhi)
+print '\n'
+print Gurgaon.distance_calculate(F2016)
+print Gurgaon.time_calculate(F2016)
+print '\n'
+print Gurgaon.distance_calculate(Googleplex)
+print Gurgaon.time_calculate(Googleplex)
