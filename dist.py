@@ -1,6 +1,22 @@
 from haversine import haversine
 
 
+# -> Calculate the distance between 2 points on Earth.
+# -> Calculate the distance (in km or in miles) between two points on Earth,
+#       located by their latitude and longitude.
+# -> haversine takes a tuple of gps co-ordinates as parameters and returns
+#       distance in kilometers (miles if miles is passed as true)
+# -> hav(d / r) = hav(w2 - w1) + { cos(w2).cos(w1).hav(l2 - l1) }
+# ------------------------Assumptions and other things------------------------
+# -> Earth is a perfect sphere
+# -> hav(c) = sin^2 (c / 2)
+# -> d is the distance between the two points
+# -> r is the radius of earth
+# -> w1, w2 = latitudes of point 1 and point 2 respectively
+# -> l1, l2 = latitudes of point 1 and point 2 respectively
+# -> All angles are measured in radians,
+#       so we have to convert latitudes and longitudes
+
 class Finder(object):
     def __init__(self, location, name):
         # location is a tuple of GPS Coordinates
@@ -43,21 +59,31 @@ class Finder(object):
                other.name + ' is ' + str(self.time[0]) + ' hours and ' + \
                str(self.time[1]) + ' minutes.'
 
+
 # -------------------------------Test data------------------------------------
 Gurgaon = Finder((28.4700, 77.0300), 'Gurgaon')
+# Gurgaon is a city in India. It comes under NCR (Near Capital Region).
 Waterloo = Finder((43.4689, -80.5400), 'Waterloo')
+# Waterloo is in Canada, near Toronto.
 Delhi = Finder((28.6139, 77.2090), 'Delhi')
+# Delhi is the Capital of India
 F2016 = Finder((1.3329, 103.7361), 'Singapore')
+# Singapore is the venue for the FOSSASIA annual conference (2016).
 Googleplex = Finder((37.4184, -122.0880), 'Googleplex')
+# Googleplex is the GoogleHQ.
 
+# Distance and Time between Waterloo and Gurgaon.
 print Gurgaon.distance_calculate(Waterloo)
 print Gurgaon.time_calculate(Waterloo)
 print '\n'
+# Distance and Time between Delhi and Gurgaon.
 print Gurgaon.distance_calculate(Delhi)
 print Gurgaon.time_calculate(Delhi)
 print '\n'
-print Gurgaon.distance_calculate(F2016)
-print Gurgaon.time_calculate(F2016)
+# Distance and Time between Singapore and Googleplex.
+print F2016.distance_calculate(Googleplex)
+print F2016.time_calculate(Googleplex)
 print '\n'
-print Gurgaon.distance_calculate(Googleplex, miles=True)
-print Gurgaon.time_calculate(Googleplex)
+# Distance and Time between Singapore and Googleplex. (in miles)
+print F2016.distance_calculate(Googleplex, miles=True)
+print F2016.time_calculate(Googleplex)
